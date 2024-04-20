@@ -6,3 +6,8 @@
 
   collections:
     - paloaltonetworks.panos
+
+  tasks:
+  - name: Test
+    debug:
+    - msg: "Test message"
