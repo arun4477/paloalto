@@ -8,6 +8,6 @@
     - paloaltonetworks.panos
 
   tasks:
-  - name: Test
-    debug:
-    - msg: "Test message"
+    - name: Test
+      debug:
+      - msg: "Test message"
