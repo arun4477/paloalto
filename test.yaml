@@ -20,7 +20,7 @@
         msg: "Test message: PaloAlto"
     
     - name: Retrieve security rules
-      panos_security_rule_info:
+      paloaltonetworks.panos.panos_security_rule_info:
         provider: "{{ palo_provider }}"
         timeout: 120
       register: security_rules_info
