@@ -1,13 +1,27 @@
 ---
 - name: Palo Alto Playbook
   hosts: paloalto
-  gather_facts: false
+  gather_facts: true
   connection: local
 
   collections:
-    - paloaltonetworks.panoss
+    - paloaltonetworks.panos
+
+  vars:
+    palo_provider:
+      ip_address: 10.10.2.85
+      username: 'admin_rw'
+      password: 'pass_admin_rw'
+    search_rule_name: 'BGP'
 
   tasks:
     - name: Test
       debug:
-        msg: "Test message"
+        msg: "Test message: PaloAlto"
+    
+    - name: Retrieve security rules
+      panos_security_rule_info:
+        provider: "{{ palo_provider }}"
+        timeout: 120
+      register: security_rules_info
+      failed_when: security_rules_info is failed
