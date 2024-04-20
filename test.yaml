@@ -10,4 +10,4 @@
   tasks:
     - name: Test
       debug:
-      - msg: "Test message"
+        msg: "Test message"
