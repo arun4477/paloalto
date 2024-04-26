@@ -18,7 +18,6 @@
     - name: Test
       debug:
         msg: "Test message: PaloAlto"
-    
     - name: Retrieve security rules
       paloaltonetworks.panos.panos_security_rule_info:
         provider: "{{ palo_provider }}"
