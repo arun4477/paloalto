@@ -18,9 +18,9 @@
     - name: Test
       debug:
         msg: "Test message: PaloAlto"
-    - name: Retrieve security rules
-      paloaltonetworks.panos.panos_security_rule_info:
-        provider: "{{ palo_provider }}"
-        timeout: 120
-      register: security_rules_info
-      failed_when: security_rules_info is failed
+
+    - name: Get facts
+      paloaltonetworks.panos.panos_facts:
+        provider: '{{ provider }}'
+        gather_subset: ['config']
+        
