@@ -21,6 +21,6 @@
 
     - name: Get facts
       paloaltonetworks.panos.panos_facts:
-        provider: '{{ provider }}'
+        provider: '{{ palo_provider }}'
         gather_subset: ['config']
         
