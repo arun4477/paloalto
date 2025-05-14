@@ -1,0 +1,30 @@
+---
+- name: Add a security rule to Palo Alto Firewall
+  hosts: paloalto_firewall
+  connection: local
+  gather_facts: no
+
+  collections:
+    - paloaltonetworks.panos
+
+  vars:
+    provider:
+      ip_address: "{{ ansible_host }}"
+      username: "admin"
+      password: "your_password"
+      # api_key: "your_api_key"  # Use api_key if preferred
+
+  tasks:
+    - name: Add HTTP allow rule from internal to external
+      panos_security_rule:
+        provider: "{{ provider }}"
+        rule_name: "Allow-HTTP-From-Internal"
+        description: "Allow HTTP from internal to external"
+        source_zone: ["internal"]
+        destination_zone: ["external"]
+        source_ip: ["1.2.3.4"]
+        destination_ip: ["any"]
+        application: ["any"]
+        service: ["service-http"]
+        action: "allow"
+        commit: true
